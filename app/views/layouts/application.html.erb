@@ -15,15 +15,13 @@
       <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="/">
-              <span>Bookers</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-            aria-expanded="true" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collaspe collapse show" id="navbarNavDropdown" style>
+              <%= link_to "Bookers", root_path, class:"navbar-brand" %>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="navbar-collaspe collapse" id="navbarNavDropdown" style>
               <ul class="navbar-nav ml-auto">
                <% if user_signed_in? %>
                  <li class="nav-item">
@@ -42,8 +40,8 @@
                    <% end %>
                  </li>
                  <li class="nav-item">
-                   <%= link_to destroy_user_session_path,  method: :delete, class:"nav-link text-light" do %>
-                     <i class="fas fa-sign_out_alt"></i>Log out
+                   <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                     <i class="fa-solid fa-right-from-bracket"></i></i>Log out
                    <% end %>
                  </li>
                <% else %>
@@ -59,12 +57,12 @@
                 </li>
                 <li class="nav-item">
                   <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
-                     <i class="fas fa-user_plus"></i>Sign up
+                     <i class="fa-solid fa-user-plus"></i>Sign up
                    <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to new_user_session_path, class:"nav-link text-light" do %>
-                     <i class="fas fa-sign_in_alt"></i>Log in
+                     <i class="fa-solid fa-right-to-bracket"></i>Log in
                    <% end %>
                 </li>
                 <% end %>

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'users' => 'users#index'
   get 'homes/about' => 'homes#about'
-  post '/:id' => 'books#show'
   devise_for :users
-  resources :users,only:[:edit, :show, :destroy,:index]
-  resources :books,only:[:new, :index, :show, :edit, :create]
+  resources :users,only:[:edit, :show, :destroy,:index,:update]
+  resources :books
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

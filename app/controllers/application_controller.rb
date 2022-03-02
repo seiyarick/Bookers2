@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_paramenters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    user_path(current_user.id)#ログインしているユーザーのidを持ってuser_pathを持っているurlへいく
+   user_path(current_user.id)#ログインしているユーザーのidを持ってuser_pathを持っているurlへいく
   end
 
   def after_sign_out_path_for(resource)
