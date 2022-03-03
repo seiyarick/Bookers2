@@ -1,6 +1,9 @@
 
 <p>Users#index</p>
+
+
 <%= render 'books/list', user: @user, book: @book %>
+
   <div class="col-md-8 offset-md-1">
     <h2>Users</h2>
     <table class="table">
@@ -12,13 +15,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
             <% @users.each do |users| %>
+            <tr>
               <td><%= image_tag users.get_profile_image(63,63) %></td>
               <td><%= users.name %></td>
               <td><%= link_to "show", user_path(users.id) %></td>
+            </tr>
             <% end %>
-          </tr>
         </tbody>
     </table>
   </div>
