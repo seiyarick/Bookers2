@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_paramenters, if: :devise_controller?
   add_flash_types :success, :info, :warning, :danger
-  
-  before_action :authenticate_user!, except: [:top]
+
+  before_action :authenticate_user!, except: [:top, :about]
 
   def after_sign_in_path_for(resource)
    user_path(current_user.id)#ログインしているユーザーのidを持ってuser_pathを持っているurlへいく

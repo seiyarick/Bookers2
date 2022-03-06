@@ -14,11 +14,11 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user = current_user
-     if @user== current_user
-       render:edit
+    @user = User.find(params[:id])
+     if @user == current_user
+       render :edit
      else
-       redirect_to _path(@user.id)
+       redirect_to user_path(current_user)
      end
 
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @book = Book.new
-    @users = User.all
+    # @users = User.all
     @books = @user.books#showの一番上にある@userにbooksがプラスで、1:nの法則
   end
 
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 private
 
 def user_params
-  params.require(:user).permit(:name,:introduction,)
+  params.require(:user).permit(:name,:introduction,:profile_image)
 end
 
 

@@ -26,6 +26,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @newbook = Book.new
     @book = Book.find(params[:id])
     @user = @book.user #@book.userにbookを登録したuserの情報が入っている
 
@@ -33,21 +34,22 @@ class BooksController < ApplicationController
 
   def edit
      @book = Book.find(params[:id])
-     if @book.user== current_user
-       render:edit
-     else
-       redirect_to book_path(@book.id)
-     end
+    if @book.user == current_user
+      render:edit
+    else
+      redirect_to books_path
+    end
   end
 
   def update
-    book = Book.find(params[:id])
-
-    if book.update(book_params)
+    @book = Book.find(params[:id])
+    @user = current_user
+    if @book.update(book_params)
       flash[:notice] = "You have updated book successfully."
-    redirect_to book_path(book.id)
+    redirect_to book_path(@book.id)
     else
-
+      @user = current_user
+      render :edit
     end
   end
 
@@ -62,6 +64,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)#:user_id?
+    params.require(:book).permit(:title, :body,)#:user_id?
   end
 end
